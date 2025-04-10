@@ -2,23 +2,23 @@ import pytest
 from age import is_adult
 
 
-class TestAgeChecker(pytest.TestCase):
+class TestAgeChecker:
 
     def test_adult(self):
-        self.assertTrue(is_adult(20))
+        assert is_adult(20) is True
 
     def test_not_adult(self):
-        self.assertFalse(is_adult(17))
+        assert is_adult(17) is False
 
     def test_negative_age(self):
-        with self.assertRaises(ValueError):
+        with pytest.raises(ValueError):
             is_adult(-5)
 
     def test_non_integer_input(self):
-        with self.assertRaises(ValueError):
+        with pytest.raises(ValueError):
             is_adult("twenty")
 
-        with self.assertRaises(ValueError):
+        with pytest.raises(ValueError):
             is_adult(18.5)
 
 
