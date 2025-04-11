@@ -28,14 +28,13 @@ jobs:
         run: flake8 . --max-line-length=88
 
       - name: Run Unit Tests and Coverage Report
-        run: |
-          pytest --cov=. --cov-report=xml
+        run: pytest --cov=app
 
       - name: Upload Coverage Report
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: coverage.xml
+          path: .coverage
 
       - name: Install Tox
         run: pip install tox
