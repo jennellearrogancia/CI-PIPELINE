@@ -25,15 +25,21 @@ jobs:
           pip install -r requirements.txt
           pip install coverage codecov
 
-      - name: Run Lint
+      - name: Run Code Linting (Flake8)
         run: flake8 . --max-line-length=88
 
-      - name: Run Tests with Coverage
+      - name: Run Unit Tests and Coverage Report
         run: |
           pytest --cov=app
           coverage xml
 
-      - name: Upload to Codecov
+      - name: Upload Coverage Report to Codecov
         run: bash <(curl -s https://codecov.io/bash)
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Install Tox
+        run: pip install tox
+
+      - name: Run Tox
+        run: tox
