@@ -5,7 +5,7 @@ from age import is_adult
 class TestAgeChecker:
 
     def test_adult(self):
-        assert is_adult(20) is True
+        assert is_adult(18) is True
 
     def test_not_adult(self):
         assert is_adult(17) is False
@@ -16,7 +16,7 @@ class TestAgeChecker:
 
     def test_non_integer_input(self):
         with pytest.raises(ValueError):
-            is_adult("twenty")
+            is_adult("eighteen")
 
         with pytest.raises(ValueError):
             is_adult(18.5)
