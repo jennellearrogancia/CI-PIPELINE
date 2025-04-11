@@ -19,7 +19,7 @@ class TestAgeChecker:
             is_adult("eighteen")
 
         with pytest.raises(ValueError):
-            is_adult(18.5)
+            is_adult(17.5)
 
 
 if __name__ == "__main__":
